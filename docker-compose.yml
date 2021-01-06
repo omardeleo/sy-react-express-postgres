@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  react:
+  frontend:
     labels:
       shipyard.route: '/'
-    build: 'react'
+    build: 'frontend'
     environment:
       CI: 'true'
       DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
     volumes:
-      - './react/src:/app/src'
-      - './react/public:/app/public'
+      - './frontend/src:/app/src'
+      - './frontend/public:/app/public'
     ports:
       - '3000:3000'
 
@@ -26,12 +26,12 @@ services:
     ports:
       - '5432:5432'
 
-  express:
+  backend:
     labels:
       shipyard.before: 'npx sequelize-cli db:migrate'
       shipyard.route: '/api'
     build:
-      context: ./express/
+      context: ./backend/
     environment:
       DB_USER: 'obscure-user'
       DB_PASSWORD: 'obscure-password'
@@ -41,9 +41,9 @@ services:
     depends_on:
       - 'postgres'
     ports:
-      - '3001:3001'
+      - '8080:8080'
     volumes:
-      - './express/src:/app/src'
+      - './backend/src:/app/src'
 
 volumes:
   postgres:

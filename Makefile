@@ -13,7 +13,7 @@ run:
 	docker-compose up
 
 shell:
-	docker-compose run express \
+	docker-compose run backend \
 		sh
 
 postgres.data.delete: clean
@@ -28,9 +28,9 @@ postgres-shell: postgres.start
 	docker exec -it $(VOLUME)_postgres_1 sh
 
 migrations.blank:
-	docker-compose up -d express
-	docker-compose exec express npx sequelize-cli migration:generate --name migration-skeleton
+	docker-compose up -d backend
+	docker-compose exec backend npx sequelize-cli migration:generate --name migration-skeleton
 
 migrations.run:
-	docker-compose up -d express
-	docker-compose exec express npx sequelize-cli db:migrate
+	docker-compose up -d backend
+	docker-compose exec backend npx sequelize-cli db:migrate

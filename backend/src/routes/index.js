@@ -21,18 +21,18 @@ const createCounter = async () => {
 }
 
 /* GET home page. */
-router.get('/express/v1/', async function(req, res, next) {
+router.get('/api/v1/', async function(req, res, next) {
   const counters = await db.Counter.findAll();
   const counter = counters.length
     ? await incrementCounter(counters[0])
     : await createCounter();
 
-  // res.render('index', { title: 'Express', counter: counter });
-  res.json({response: `Hi! I'm an Express server.\n
-I'm running on port 3001.
+  const response = `Hi! I'm an Express server.\n
+I'm running on port 8080.
 I've been pinged ${counter} times.
+Last pinged on ${new Date()}`;
 
-Last pinged on ${new Date()}`});
+  res.json({response: response});
 });
 
 module.exports = router;
