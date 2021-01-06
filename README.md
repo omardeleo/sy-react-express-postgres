@@ -1,4 +1,4 @@
-# The React Template &middot; [![Version Badge](https://img.shields.io/badge/version-1.0.0-brightgreen)](#)
+# The React + Express Template &middot; [![Version Badge](https://img.shields.io/badge/version-1.0.0-brightgreen)](#)
 
 An React starter project that works with [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/),
 and [Shipyard](https://shipyard.build) out of the box.
@@ -7,6 +7,11 @@ and [Shipyard](https://shipyard.build) out of the box.
 
 - [React](https://github.com/facebook/react/) - JavaScript library for building user interfaces
 - [Material-UI](https://github.com/mui-org/material-ui) - React components for faster and simpler web development
+- [Express](https://github.com/expressjs/express) - lightweight node.js web framework
+- [nodemon](https://github.com/remy/nodemon) - auto-reload server on code changes
+- [Pug](https://github.com/pugjs/pug) - HTML template engine that integrates with Express
+- [Sequelize](https://github.com/sequelize/sequelize) - cross-database ORM and migrations
+- [PostgreSQL](https://www.postgresql.org/) - database
 
 ## Dependencies
 
