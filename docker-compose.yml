@@ -1,6 +1,7 @@
 version: '3.8'
 
 services:
+
   frontend:
     labels:
       shipyard.route: '/'
@@ -44,6 +45,12 @@ services:
       - '8080:8080'
     volumes:
       - './backend/src:/app/src'
+
+  localstack:
+    image: 'localstack/localstack'
+    ports:
+      - '4566:4566'
+      - '4571:4571'
 
 volumes:
   postgres:
