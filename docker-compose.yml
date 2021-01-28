@@ -14,6 +14,19 @@ services:
     ports:
       - '3000:3000'
 
+  postgres:
+    image: 'postgres:9.6.20-alpine'
+    restart: always
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=obscure-user
+      - POSTGRES_PASSWORD=obscure-password
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - '5432'
+
   backend:
     labels:
       shipyard.before: 'npx sequelize-cli db:migrate'
@@ -32,19 +45,6 @@ services:
       - '8080:8080'
     volumes:
       - './backend/src:/app/src'
-
-  postgres:
-    image: 'postgres:13.0-alpine'
-    restart: always
-    volumes:
-      - 'postgres:/var/lib/postgresql/data'
-    environment:
-      - POSTGRES_DB=app
-      - POSTGRES_USER=obscure-user
-      - POSTGRES_PASSWORD=obscure-password
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    ports:
-      - '5432'
 
 volumes:
   postgres:
