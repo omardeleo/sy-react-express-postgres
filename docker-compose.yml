@@ -39,8 +39,10 @@ services:
       DB_NAME: 'app'
       DB_HOST: 'postgres'
       DB_PORT: '5432'
+      LOCALSTACK_HOST: 'localstack'
     depends_on:
       - 'postgres'
+    restart: always
     ports:
       - '8080:8080'
     volumes:
@@ -48,9 +50,15 @@ services:
 
   localstack:
     image: 'localstack/localstack'
+    environment:
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - 'localstack:/tmp/localstack'
+
     ports:
       - '4566:4566'
       - '4571:4571'
 
 volumes:
   postgres:
+  localstack:
