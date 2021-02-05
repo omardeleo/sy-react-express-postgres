@@ -12,6 +12,7 @@ import ConnectCard from "./ConnectCard";
 import DeployCard from "./DeployCard";
 import MaterialCard from "./MaterialCard";
 import ThemeCard from "./ThemeCard";
+import UploadCard from "./UploadCard";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: "700px",
-    padding: "0 15px",
+    padding: "10px 25px",
   },
   cardHeader: {
     marginBottom: "30px"
@@ -72,17 +73,20 @@ function App() {
           <h1>React/Express/Postgres Starter Project</h1>
         </Box>
         <Grid container className={classes.container} spacing={2}>
-          <Grid item xs={12} sm={12} md={6} lg={3}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <ThemeCard classes={classes} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={3}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <MaterialCard classes={classes} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={3}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <ConnectCard classes={classes} />
           </Grid>
-          <Grid item xs={12} sm={12} md={6} lg={3}>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
             <DeployCard classes={classes}/>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6} lg={4}>
+            <UploadCard classes={classes}/>
           </Grid>
         </Grid>
       </Box>
