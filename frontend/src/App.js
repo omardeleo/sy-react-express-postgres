@@ -45,6 +45,21 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center"
     },
   },
+  gridContainer: {
+    marginTop: 20,
+    width: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+  },
+  gridList: {
+    width: 500,
+    height: 450,
+  },
+  form: {
+    marginTop: '50'
+  }
 }));
 
 function App() {
@@ -66,7 +81,7 @@ function App() {
         >
           <Tooltip title={<h3>Replace file at <code>`/frontend/src/logo.png`</code> with your logo file!</h3>}>
             <Box mt="20px" display="flex" flexDirection="column" alignItems="center">
-              <img className={classes.img} src="/test-bucket/logo.png" />
+              <img className={classes.img} src={logo} />
               <Typography variant="caption">Hover over logo to replace</Typography>
             </Box>
           </Tooltip>
@@ -83,10 +98,10 @@ function App() {
             <ConnectCard classes={classes} />
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={4}>
-            <DeployCard classes={classes}/>
+            <UploadCard classes={classes}/>
           </Grid>
           <Grid item xs={12} sm={12} md={6} lg={4}>
-            <UploadCard classes={classes}/>
+            <DeployCard classes={classes}/>
           </Grid>
         </Grid>
       </Box>
