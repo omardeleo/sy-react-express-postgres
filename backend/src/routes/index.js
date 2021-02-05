@@ -45,93 +45,45 @@ router.get('/api/v1/files', async function(req, res, next) {
   res.json(data);
 });
 
-const uploadFile = (s3, buffer, name, type) => {
-  const params = {
-    ACL: 'public-read',
-    Body: buffer,
-    Bucket: 'test-bucket',
-    ContentType: type.mime,
-    Key: `${name}.${type.ext}`,
-  };
-  return s3.upload(params).promise();
-};
-
 router.post('/api/v1/files/upload/', (req, res) => {
   const s3 = new aws.S3(config);
+
+  const uploadFile = async (fileName) => {
+    const fileContent = fs.readFileSync(fileName);
+
+    // Setting up S3 upload parameters
+    const params = {
+        Bucket: 'test-bucket',
+        Key: `upload-${Date.now()}.jpg`, // File name you want to save as in S3
+        Body: fileContent
+    };
+
+    // Uploading files to the bucket
+    s3.upload(params, function(err, data) {
+      if (err) {
+          throw err;
+      }
+      console.log(`File uploaded successfully. ${data.Location}`);
+      return `${params['Bucket']}/${params['Key']}`;
+    });
+  };
+
   const form = new multiparty.Form();
-  console.log("hit route")
+
   form.parse(req, async (error, fields, files) => {
     if (error) {
-      console.log("really?")
       return res.status(500).send(error);
     };
     try {
       const path = files.file[0].path;
-      const buffer = fs.readFileSync(path);
-      const type = await FileType.fromBuffer(buffer);
-      const fileName = `${Date.now().toString()}`;
-      const data = await uploadFile(s3, buffer, fileName, type);
-
-      return res.status(200).send(data);
+      const response = await uploadFile(path);
+      return res.send(response);
     } catch (err) {
       return res.status(500).send(err);
     }
-
-    res.send("yo")
   });
-  
-
-  // const uploadFile = async (fileName) => {
-  //   const fileContent = fs.readFileSync(fileName);
-
-  //   // Setting up S3 upload parameters
-  //   const params = {
-  //       Bucket: 'test-bucket',
-  //       Key: `upload-${Date.now().toString()}.jpg`, // File name you want to save as in S3
-  //       Body: fileContent
-  //   };
-
-  //   // Uploading files to the bucket
-  //   s3.upload(params, function(err, data) {
-  //       if (err) {
-  //           throw err;
-  //       }
-  //       console.log(`File uploaded successfully. ${data.Location}`);
-  //   });
-  // };
-  // const dirPath = path.join(__dirname, req.params.file);
-  // await uploadFile(dirPath);
-
-  // res.redirect('/api/v1/files/')
 });
 
-// old upload route
-
-// router.get('/api/v1/files/upload/:file', async function(req, res, next) {
-//   const s3 = new aws.S3(config);
-//   const uploadFile = async (fileName) => {
-//     const fileContent = fs.readFileSync(fileName);
-
-//     // Setting up S3 upload parameters
-//     const params = {
-//         Bucket: 'test-bucket',
-//         Key: `upload-${Date.now()}.jpg`, // File name you want to save as in S3
-//         Body: fileContent
-//     };
-
-//     // Uploading files to the bucket
-//     s3.upload(params, function(err, data) {
-//         if (err) {
-//             throw err;
-//         }
-//         console.log(`File uploaded successfully. ${data.Location}`);
-//     });
-//   };
-//   const dirPath = path.join(__dirname, req.params.file);
-//   await uploadFile(dirPath);
-
-//   res.redirect('/api/v1/files/')
-// });
 
 /* GET home page. */
 router.get('/api/v1/', async function(req, res, next) {
