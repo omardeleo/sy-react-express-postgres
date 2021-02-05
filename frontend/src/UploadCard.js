@@ -68,6 +68,7 @@ function UploadCard(props) {
         <Box display="flex" flexDirection="column" alignItems="center"> <form onSubmit={e => submitFile(e)}>
             <Box>
           <input ref={inputEl} type="file"
+            accept=".jpg,.jpeg,.png,.gif"
             onChange={
               event => {
                 setFile(event.target.files);
