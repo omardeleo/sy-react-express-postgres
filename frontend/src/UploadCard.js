@@ -1,7 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import { Card, GridList, GridListTile, Link, Box } from '@material-ui/core';
-import logo from './logo.png';
+import { useEffect, useRef, useState } from 'react';
+import { Box, Card, GridList, GridListTile, Link } from '@material-ui/core';
 
 function UploadCard(props) {
   const inputEl = useRef(null);
@@ -9,7 +7,6 @@ function UploadCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  console.log(props)
 
   const fetchData = () => {
     fetch('api/v1/files')
@@ -17,9 +14,10 @@ function UploadCard(props) {
       .then(
         (result) => {
           setIsLoaded(true);
-          console.log('result', result)
           const bucket = result['Name'];
-          const filenames = result['Contents'].map(file => `${bucket}/${file['Key']}`).reverse();
+          const filenames = result['Contents']
+            .map(file => `${bucket}/${file['Key']}`)
+            .reverse();
           setData(filenames);
         },
         (error) => {
@@ -33,18 +31,16 @@ function UploadCard(props) {
 
   const submitFile = async (e) => {
     e.preventDefault();
-    // const ref = useRef();
+
     try {
       if (!file) {
-        throw new Error('Please select a file');
+        throw new Error('Please select an image');
       }
       const formData = new FormData();
       formData.append('file', file[0]);
-      console.log('formData', formData);
-      await axios.post('/api/v1/files/upload/', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
+      await fetch('/api/v1/files/upload/', {
+        method: 'POST',
+        body: formData
       })
       inputEl.current.value = "";
       fetchData();
