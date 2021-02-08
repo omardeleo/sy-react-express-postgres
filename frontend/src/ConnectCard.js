@@ -51,7 +51,7 @@ function ConnectCard(props) {
       <h2 className={classes.cardHeader}>Connect to a server</h2>
       <p>This React frontend is connected to a Express backend.</p>
       <Box display="flex" flexDirection="column" alignItems="center">
-        <Box><img width="100px" src={expressLogo} /></Box>
+        <Box><img width="100px" src={expressLogo} alt="Express Logo"/></Box>
       </Box>
       <p>Below is the response from the server:</p>
       <ResponseBlock response={data.response} />

@@ -8,7 +8,7 @@ function DeployCard(props) {
       <p>Easily deploy your app using Shipyard.</p>
       <Box display="flex" justifyContent="center" pt="20px" mb="40px">
         <Link href="https://shipyard.build" target="_blank" rel="noopener">
-          <img width="150px" src={logo} />
+          <img width="150px" src={logo} alt="Shipyard logo"/>
         </Link>
       </Box>
       <p>Alternatively, read this guide on how to deploy a containerized web app:{" "}
