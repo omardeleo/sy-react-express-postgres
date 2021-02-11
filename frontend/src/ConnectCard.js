@@ -49,7 +49,7 @@ function ConnectCard(props) {
   } else return (
     <Card className={classes.card}>
       <h2 className={classes.cardHeader}>Connect to a server</h2>
-      <p>This React frontend is connected to a Express backend.</p>
+      <p>This React frontend is connected to an Express backend.</p>
       <Box display="flex" flexDirection="column" alignItems="center">
         <Box><img width="100px" src={expressLogo} alt="Express Logo"/></Box>
       </Box>
