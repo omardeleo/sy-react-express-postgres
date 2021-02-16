@@ -70,7 +70,7 @@ function ConnectCard(props) {
         <img width="75px" height="100%" src={expressLogo} alt="Express Logo"/>
       </Box>
       <p>This React frontend is connected to an Express server. Below is the response message we receive when we ping the server:</p>
-      <p className={classes.snippet}>
+      <p className={classes.response}>
         {data.response}
       </p>
       <p>The server ping count is stored to the database. Click below to reset the count:</p>

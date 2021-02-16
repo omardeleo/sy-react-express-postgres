@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   card: {
     height: "700px",
     padding: "10px 25px",
+    overflow: "auto",
   },
   cardHeader: {
     marginBottom: "30px"
@@ -56,6 +57,11 @@ const useStyles = makeStyles((theme) => ({
   form: {
     marginTop: '50'
   },
+  response: {
+    fontFamily: "monospace",
+    color: "limeGreen",
+    fontSize: "1.2em"
+  }
 }));
 
 function App() {
