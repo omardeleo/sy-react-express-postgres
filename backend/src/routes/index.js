@@ -107,7 +107,7 @@ router.get('/api/v1/', async function(req, res, next) {
     : await createCounter();
 
   const response = `Express server running on port 8080.
-Pinged ${counter} times, most recently on ${new Date()}`;
+Pinged ${counter} ${counter === 1 ? 'time' : 'times'}, most recently on ${new Date()}`;
 
   res.json({response: response});
 });
