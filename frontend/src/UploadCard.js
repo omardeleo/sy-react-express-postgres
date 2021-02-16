@@ -59,7 +59,7 @@ function UploadCard(props) {
           rel="noopener"
           href="https://github.com/localstack/localstack"
         >
-          LocalStack
+          <b>LocalStack</b>
         </Link> - a fully functional local AWS cloud stack, and displayed below.</p>
         <Box display="flex" flexDirection="column" alignItems="center" mt={5} mb={5}>
           <form onSubmit={e => submitFile(e)}>
