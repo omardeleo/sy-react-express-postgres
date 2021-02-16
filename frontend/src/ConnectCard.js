@@ -73,7 +73,7 @@ function ConnectCard(props) {
       <p className={classes.response}>
         {data.response}
       </p>
-      <p>The server ping count is stored to the database. Click below to reset the count:</p>
+      <p>The server ping count is stored to the database. Click below to <b>reset the counter:</b></p>
       <Box display="flex" justifyContent="center">
         <button onClick={resetCounter}>Reset Ping Counter</button>
       </Box>
