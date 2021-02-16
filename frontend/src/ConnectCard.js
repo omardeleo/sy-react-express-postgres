@@ -13,8 +13,8 @@ function ResponseBlock(props) {
     Prism.highlightAll();
   }, []);
   return (
-    <pre><code className="language-html">
-      { `${props.response}` }
+    <pre><code className={props.language}>
+      { `${props.code}` }
     </code></pre>
   )
 }
@@ -40,7 +40,21 @@ function ConnectCard(props) {
       )
   }
 
+  const resetCounter = () => {
+    fetch("/api/v1/reset/")
+      .then(res => res.json())
+      .then(data => fetchData())
+  }
+
   useEffect(() => fetchData(), []);
+
+  const codeBlock =`30 |  const resetCounter = async (counter) => {
+31 |    const { count } = counter;
+32 |    await db.Counter.update({ count: 0 }, {
+33 |      where: { count: count }
+34 |    });
+35 |    return count + 1;
+36 |  }`
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -48,26 +62,39 @@ function ConnectCard(props) {
     return <div>Loading...</div>;
   } else return (
     <Card className={classes.card}>
-      <h2 className={classes.cardHeader}>Connect to a server</h2>
-      <p>This React frontend is connected to an Express backend.</p>
-      <Box display="flex" flexDirection="column" alignItems="center">
-        <Box><img width="100px" src={expressLogo} alt="Express Logo"/></Box>
+      <Box><h2>Connect to a server</h2></Box>
+      <Box display="flex" flexDirection="row" alignItems="center" mt={-4} mb={-1}>
+        <Box mr={1}>
+          <h3>Powered by</h3>
+        </Box>
+        <img width="75px" height="100%" src={expressLogo} alt="Express Logo"/>
       </Box>
-      <p>Below is the response from the server:</p>
-      <ResponseBlock response={data.response} />
-      <p>Update <code>`backend/src/routes/index.js`</code>, save the file, then refresh this page to <b>see a new message.</b></p>
+      <p>This React frontend is connected to an Express server. Below is the response message we receive when we ping the server:</p>
+      <p className={classes.snippet}>
+        {data.response}
+      </p>
+      <p>The server ping count is stored to the database. Click below to reset the count:</p>
+      <Box display="flex" justifyContent="center">
+        <button onClick={resetCounter}>Reset Ping Counter</button>
+      </Box>
+      <br></br>
+      <p>Update <code>`backend/src/routes/index.js`</code>, save the file, then refresh this page to <b>see a new response message.</b></p>
       <p>Replace the code below:</p>
-      <pre>
-        <code className="language-js">
-          { `35 |  res.json({response: response});` }
-        </code>
-      </pre>
+      <ResponseBlock
+        language="language-js"
+        code="35 |  res.json({response: response});"
+      />
       <p>with:</p>
-      <pre>
-        <code className="language-js">
-          { `35 |  res.json({response: "I just updated the response message!"})` }
-        </code>
-      </pre>
+      <ResponseBlock
+        language="language-js"
+        code='35 |  res.json({response: "I just updated the response message!"})'
+      />
+      <br></br>
+      <p>The function that <b>resets the ping counter</b> is located in <code>`backend/src/routes/index.js`:</code></p>
+      <ResponseBlock
+        language="language-js"
+        code={codeBlock}
+      />
     </Card>
   );
 }
