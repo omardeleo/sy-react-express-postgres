@@ -9,7 +9,7 @@ function DeployCard(props) {
         <Box mr={1}>
           <h3>Powered by</h3>
         </Box>
-        <img width="120px" height="100%" src={logo} alt="Express Logo"/>
+        <img width="120px" height="100%" src={logo} alt="Shipyard Logo"/>
       </Box>
       <p>Use{" "}
         <Link
