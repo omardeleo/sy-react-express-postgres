@@ -5,7 +5,7 @@ function DeployCard(props) {
   return (
     <Card className={props.classes.card}>
       <h2>Deploy your app to the cloud</h2>
-      <Box display="flex" flexDirection="row" alignItems="center" mt={-4} mb={-1}>
+      <Box display="flex" flexDirection="row" alignItems="center" mt={-3} mb={-1}>
         <Box mr={1}>
           <h3>Powered by</h3>
         </Box>
