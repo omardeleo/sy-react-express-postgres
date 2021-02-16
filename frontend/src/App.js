@@ -61,7 +61,13 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "monospace",
     color: "limeGreen",
     fontSize: "1.3em"
-  }
+  },
+  list: {
+    fontSize: "1.1em",
+    "& li": {
+      marginBottom: "8px"
+    }
+  },
 }));
 
 function App() {
