@@ -62,7 +62,7 @@ function ConnectCard(props) {
     return <div>Loading...</div>;
   } else return (
     <Card className={classes.card}>
-      <Box><h2>Connect to a server</h2></Box>
+      <h2>Connect to a server</h2>
       <Box display="flex" flexDirection="row" alignItems="center" mt={-4} mb={-1}>
         <Box mr={1}>
           <h3>Powered by</h3>
