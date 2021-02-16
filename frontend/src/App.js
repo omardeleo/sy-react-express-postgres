@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   response: {
     fontFamily: "monospace",
     color: "limeGreen",
-    fontSize: "1.2em"
+    fontSize: "1.3em"
   }
 }));
 
