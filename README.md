@@ -1,6 +1,6 @@
 # The React + Express Template &middot; [![Version Badge](https://img.shields.io/badge/version-1.0.0-brightgreen)](#)
 
-An React starter project with Express backend that works with [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/),
+A React starter project with Express backend that works with [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/),
 and [Shipyard](https://shipyard.build) out of the box.
 
 ## Includes
@@ -12,6 +12,7 @@ and [Shipyard](https://shipyard.build) out of the box.
 - [Pug](https://github.com/pugjs/pug) - HTML template engine that integrates with Express
 - [Sequelize](https://github.com/sequelize/sequelize) - cross-database ORM and migrations
 - [PostgreSQL](https://www.postgresql.org/) - database
+- [LocalStack](https://github.com/localstack/localstack) - fully functional local AWS cloud stack
 
 ## Dependencies
 
@@ -22,4 +23,5 @@ and [Shipyard](https://shipyard.build) out of the box.
 
 - Run `make develop` at the root of this project.
 - Visit the app at http://localhost:3000.
+- Visit http://localhost:8080/api/v1/files to list objects in LocalStack s3 bucket.
 - Make your code changes! The app will reload whenever you save.
