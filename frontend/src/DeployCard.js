@@ -44,7 +44,7 @@ function DeployCard(props) {
             </Link>
             {" "}credentials.
           </li>
-          <li>Click <b>Add Repository</b> to select the project you'd like to deploy.</li>
+          <li>Click <b>Add Repository</b> to select the repo for this starter project.</li>
           <li><b>Select the branch</b> you'd like to deploy.</li>
           <li>Click <b>Deploy</b> to deploy the app!</li>
         </ul>
