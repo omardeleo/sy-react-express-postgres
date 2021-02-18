@@ -12,7 +12,7 @@ function MaterialCard(props) {
       <List>
         { seasons.map(season => <Chip key={season} label={season} />) }
       </List>
-      <p>To change the <b>chips</b> above to <b>list items</b>, open <code><Link className={classes.link} href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/MaterialCard.js#L12`} target="_blank">`frontend/src/MaterialCard.js`
+      <p>To change the <b>chips</b> above to <b>list items</b>, open <code><Link className={classes.link} href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/MaterialCard.js#L13`} target="_blank">`frontend/src/MaterialCard.js`
 </Link></code> and replace the following code:</p>
       <pre><code className="language-js">
           { codeBlock_3 }
