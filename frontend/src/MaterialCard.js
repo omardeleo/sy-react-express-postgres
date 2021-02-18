@@ -3,8 +3,8 @@ import { Card, List, ListItem, ListItemText, Chip, Link } from '@material-ui/cor
 function MaterialCard(props) {
   const { classes } = props;
   const seasons = ["Winter", "Spring", "Summer", "Fall"];
-  const codeBlock_3 = `12 | { seasons.map(season => <Chip label={season} />) } `;
-  const codeBlock_4 = `12 | { seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>) } `;
+  const codeBlock_3 = `13 | { seasons.map(season => <Chip label={season} />) } `;
+  const codeBlock_4 = `13 | { seasons.map(season => <ListItem button><ListItemText primary={season}/></ListItem>) } `;
   return (
     <Card className={classes.card}>
       <h2 className={classes.cardHeader}>Use Material-UI components</h2>
