@@ -92,8 +92,6 @@ router.post('/api/v1/files/upload/', (req, res) => {
   });
 });
 
-
-/* GET home page. */
 router.get('/api/v1/reset', async function(req, res, next) {
   const counters = await db.Counter.findAll();
   const count = await resetCounter(counters[0]);
@@ -106,8 +104,7 @@ router.get('/api/v1/', async function(req, res, next) {
     ? await incrementCounter(counters[0])
     : await createCounter();
 
-  const response = `Express server running on port 8080.
-Pinged ${counter} ${counter === 1 ? 'time' : 'times'}, most recently on ${new Date()}`;
+  const response = `Express server running on port 8080. Pinged ${counter} ${counter === 1 ? 'time' : 'times'}, most recently on ${new Date()}`;
 
   res.json({response: response});
 });

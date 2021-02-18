@@ -1,6 +1,8 @@
 import {
   Box,
+  Button,
   Card,
+  Link,
 } from '@material-ui/core';
 import Prism from 'prismjs';
 
@@ -48,13 +50,11 @@ function ConnectCard(props) {
 
   useEffect(() => fetchData(), []);
 
-  const codeBlock =`30 |  const resetCounter = async (counter) => {
-31 |    const { count } = counter;
-32 |    await db.Counter.update({ count: 0 }, {
-33 |      where: { count: count }
-34 |    });
-35 |    return count + 1;
-36 |  }`
+  const codeBlock =`95 |  router.get('/api/v1/reset', async function(req, res, next) {
+96 |    const counters = await db.Counter.findAll();
+97 |    const count = await resetCounter(counters[0]);
+98 |    res.json({response: count})
+99 |  });`
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -70,27 +70,22 @@ function ConnectCard(props) {
         <img width="75px" height="100%" src={expressLogo} alt="Express Logo"/>
       </Box>
       <p>This React frontend is connected to an Express server. Below is the response message we receive when we ping the server:</p>
-      <p className={classes.response}>
-        {data.response}
-      </p>
+      
+        <pre className={classes.pre}><p className={classes.response}>> {data.response}</p></pre>
+      
       <p>The server ping count is stored to the database. Click below to <b>reset the counter:</b></p>
       <Box display="flex" justifyContent="center">
-        <button onClick={resetCounter}>Reset Ping Counter</button>
+        <Button
+          variant="contained"
+          size="small"
+          className={classes.contained}
+          onClick={resetCounter}
+        >
+          Reset Counter
+        </Button>
       </Box>
-      <br></br>
-      <p>Update <code>`backend/src/routes/index.js`</code>, save the file, then refresh this page to <b>see a new response message.</b></p>
-      <p>Replace the code below:</p>
-      <ResponseBlock
-        language="language-js"
-        code="35 |  res.json({response: response});"
-      />
-      <p>with:</p>
-      <ResponseBlock
-        language="language-js"
-        code='35 |  res.json({response: "I just updated the response message!"})'
-      />
-      <br></br>
-      <p>The function that <b>resets the ping counter</b> is located in <code>`backend/src/routes/index.js`:</code></p>
+      <p>The <b>endpoint</b> that resets the ping counter is located in <code><Link className={classes.link} href={`${process.env.REACT_APP_STARTER_REPO_URL}backend/src/routes/index.js#L95-L99`} target="_blank">`backend/src/routes/index.js`
+</Link></code>:</p>
       <ResponseBlock
         language="language-js"
         code={codeBlock}
