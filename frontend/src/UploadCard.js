@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { Box, Button, Card, GridList, GridListTile, Link } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  Card,
+  GridList,
+  GridListTile,
+  Link,
+} from '@material-ui/core';
 
 import localStackLogo from './localStackLogo.png';
 
@@ -8,18 +15,18 @@ function UploadCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [inputField, setInputField] = useState()
+  const [inputField, setInputField] = useState();
 
   const { classes } = props;
   const fetchData = () => {
     fetch('api/v1/files')
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           const bucket = result['Name'];
           const filenames = result['Contents']
-            .map(file => `${bucket}/${file['Key']}`)
+            .map((file) => `${bucket}/${file['Key']}`)
             .reverse();
           setData(filenames);
         },
@@ -27,8 +34,8 @@ function UploadCard(props) {
           setIsLoaded(true);
           setError(error);
         }
-      )
-  }
+      );
+  };
 
   useEffect(() => fetchData(), []);
 
@@ -43,9 +50,9 @@ function UploadCard(props) {
       formData.append('file', file[0]);
       await fetch('/api/v1/files/upload/', {
         method: 'POST',
-        body: formData
-      })
-      inputEl.current.value = "";
+        body: formData,
+      });
+      inputEl.current.value = '';
       fetchData();
     } catch (error) {
       alert(error);
@@ -55,61 +62,80 @@ function UploadCard(props) {
   return (
     <Card className={classes.card}>
       <h2>Store files in S3, locally</h2>
-      <Box display="flex" flexDirection="row" alignItems="center" mt={-3} mb={-1}>
+      <Box
+        display="flex"
+        flexDirection="row"
+        alignItems="center"
+        mt={-3}
+        mb={-1}
+      >
         <Box mr={1}>
           <h3>Powered by</h3>
         </Box>
-        <img width="75px" height="100%" src={localStackLogo} alt="Express Logo"/>
+        <img
+          width="75px"
+          height="100%"
+          src={localStackLogo}
+          alt="Express Logo"
+        />
       </Box>
       <p>Click below to select and upload an image from your computer.</p>
-      <p>The image will be <b>stored in a local S3 bucket</b>, powered by <Link
+      <p>
+        The image will be <b>stored in a local S3 bucket</b>, powered by{' '}
+        <Link
           className={classes.link}
           target="_blank"
           rel="noopener"
           href="https://github.com/localstack/localstack"
         >
           <b>LocalStack</b>
-        </Link> - a fully functional local AWS cloud stack, and displayed below.</p>
-        <form>
-          <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" mt={2} mb={3}>
-
-              <Button
-                variant="contained"
-                className={classes.contained}
-                component="label"
-                size="small"
-              >
-                Upload Image
-                <input ref={inputEl}
-                  type="file"
-                  accept=".jpg,.jpeg,.png,.gif"
-                  onChange={
-                    event => {
-                      submitFile(event);
-                    }
-                  }
-                  hidden
-                />
-              </Button>
-          </Box>
-        </form>
-
-      { data ?
-      <Box display="flex" flexDirection="row" justifyContent="center">
-        <div className={classes.gridContainer}>
-          <GridList
-            cellHeight={100}
-            cols={3}
+        </Link>{' '}
+        - a fully functional local AWS cloud stack, and displayed below.
+      </p>
+      <form>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          mt={2}
+          mb={3}
+        >
+          <Button
+            variant="contained"
+            className={classes.contained}
+            component="label"
+            size="small"
           >
-            {data.map((src) => (
-              <GridListTile key={src} cols={1}>
-                <img src={src} alt="Uploaded to LocalStack" />
-              </GridListTile>
-            ))}
-          </GridList>
-        </div>
-      </Box>
-      : "" }
+            Upload Image
+            <input
+              ref={inputEl}
+              type="file"
+              accept=".jpg,.jpeg,.png,.gif"
+              onChange={(event) => {
+                submitFile(event);
+              }}
+              hidden
+            />
+          </Button>
+        </Box>
+      </form>
+
+      {data ? (
+        <Box display="flex" flexDirection="row" justifyContent="center">
+          <div className={classes.gridContainer}>
+            <GridList cellHeight={100} cols={3}>
+              {data.map((src) => (
+                <GridListTile key={src} cols={1}>
+                  <img src={src} alt="Uploaded to LocalStack" />
+                </GridListTile>
+              ))}
+            </GridList>
+          </div>
+        </Box>
+      ) : (
+        ''
+      )}
     </Card>
   );
 }
