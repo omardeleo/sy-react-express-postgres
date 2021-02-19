@@ -1,6 +1,8 @@
+![Shipyard](./src/logo.png)
+
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This [Shipyard](http://shipyard.build) starter project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Below are useful resources to learn more about optimizing and configuring your React frontend, as well as other React-related topics.
 
 ## Available Scripts
 
