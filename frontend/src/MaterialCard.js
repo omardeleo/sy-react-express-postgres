@@ -52,11 +52,11 @@ function MaterialCard(props) {
         Read the Material-UI docs to learn more about components:{' '}
         <Link
           className={classes.link}
-          href="https://material-ui.com/"
+          href="https://material-ui.com"
           target="_blank"
           rel="noopener"
         >
-          <b>https://material-ui.com/</b>
+          <b>https://material-ui.com</b>
         </Link>
         .
       </p>

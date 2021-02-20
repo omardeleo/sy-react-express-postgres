@@ -37,9 +37,9 @@ function DeployCard(props) {
             className={classes.link}
             target="_blank"
             rel="noopener"
-            href="https://shipyard.build/"
+            href="https://shipyard.build"
           >
-            <b>https://shipyard.build/</b>
+            <b>https://shipyard.build</b>
           </Link>
           .
         </li>
@@ -49,7 +49,7 @@ function DeployCard(props) {
             className={classes.link}
             target="_blank"
             rel="noopener"
-            href="https://github.com/"
+            href="https://github.com"
           >
             <b>GitHub</b>
           </Link>{' '}
