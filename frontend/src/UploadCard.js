@@ -16,7 +16,7 @@ function UploadCard(props) {
   const [error, setError] = useState(null);
 
   const { classes } = props;
-  const fetchData = () => {
+  const fetchBucketFiles = () => {
     fetch('api/v1/files')
       .then((res) => res.json())
       .then(
@@ -35,7 +35,7 @@ function UploadCard(props) {
       );
   };
 
-  useEffect(() => fetchData(), []);
+  useEffect(() => fetchBucketFiles(), []);
 
   const submitFile = async (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ function UploadCard(props) {
         method: 'POST',
         body: formData,
       });
-      fetchData();
+      fetchBucketFiles();
     } catch (error) {
       alert(error);
     }
