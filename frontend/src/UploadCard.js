@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -11,11 +11,9 @@ import {
 import localStackLogo from './localStackLogo.png';
 
 function UploadCard(props) {
-  const inputEl = useRef(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [inputField, setInputField] = useState();
 
   const { classes } = props;
   const fetchData = () => {
@@ -52,7 +50,6 @@ function UploadCard(props) {
         method: 'POST',
         body: formData,
       });
-      inputEl.current.value = '';
       fetchData();
     } catch (error) {
       alert(error);
@@ -99,7 +96,7 @@ function UploadCard(props) {
           alignItems="center"
           justifyContent="center"
           mt={2}
-          mb={3}
+          mb={1}
         >
           <Button
             variant="contained"
@@ -109,7 +106,6 @@ function UploadCard(props) {
           >
             Upload Image
             <input
-              ref={inputEl}
               type="file"
               accept=".jpg,.jpeg,.png,.gif"
               onChange={(event) => {
