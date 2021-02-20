@@ -1,20 +1,20 @@
 import { Card, Link } from '@material-ui/core';
 
 function ThemeCard(props) {
-  const codeBlock_1 = `91 |  const theme = createMuiTheme({
-92 |    palette: {
-93 |      type: 'dark',
-94 |    }
-95 |  });`;
+  const codeBlock_1 = `95 |  const theme = createMuiTheme({
+96 |    palette: {
+97 |      type: 'dark',
+98 |    },
+99 |  });`;
 
-  const codeBlock_2 = `91 |  const theme = createMuiTheme({
-92 |    palette: {
-93 |      type: 'light',
-94 |    }
-95 |  });`;
+  const codeBlock_2 = `95 |  const theme = createMuiTheme({
+96 |    palette: {
+97 |      type: 'light',
+98 |    },
+99 |  });`;
 
   const { classes } = props;
-  console.log('env', process.env.REACT_APP_STARTER_REPO_URL);
+
   return (
     <Card className={props.classes.card}>
       <h2 className={props.classes.cardHeader}>Update appearance</h2>
@@ -27,10 +27,10 @@ function ThemeCard(props) {
         <code>
           <Link
             className={classes.link}
-            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/App.js#L91-L95`}
+            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/App.js#L95-L99`}
             target="_blank"
           >
-            `frontend/src/App.js`
+            frontend/src/App.js
           </Link>
         </code>{' '}
         and replace the following code:

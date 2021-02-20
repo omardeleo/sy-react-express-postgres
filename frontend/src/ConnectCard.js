@@ -45,11 +45,11 @@ function ConnectCard(props) {
 
   useEffect(() => fetchData(), []);
 
-  const codeBlock = `95 |  router.get('/api/v1/reset', async function(req, res, next) {
-96 |    const counters = await db.Counter.findAll();
-97 |    const count = await resetCounter(counters[0]);
-98 |    res.json({response: count})
-99 |  });`;
+  const codeBlock = `101 |  router.get('/api/v1/reset', async function (req, res, next) {
+102 |    const counters = await db.Counter.findAll();
+103 |    const count = await resetCounter(counters[0]);
+104 |    res.json({response: count})
+105 |  });`;
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -106,10 +106,10 @@ function ConnectCard(props) {
           <code>
             <Link
               className={classes.link}
-              href={`${process.env.REACT_APP_STARTER_REPO_URL}backend/src/routes/index.js#L95-L99`}
+              href={`${process.env.REACT_APP_STARTER_REPO_URL}backend/src/routes/index.js#L101-L105`}
               target="_blank"
             >
-              `backend/src/routes/index.js`
+              backend/src/routes/index.js
             </Link>
           </code>
           :
