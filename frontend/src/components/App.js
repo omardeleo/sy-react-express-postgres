@@ -1,8 +1,5 @@
-import logo from './logo.png';
-import './App.css';
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
-
 import { Grid, Box, Link, Typography } from '@material-ui/core';
 import {
   makeStyles,
@@ -10,6 +7,8 @@ import {
   ThemeProvider,
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+
+import './App.css';
 
 import ConnectCard from './ConnectCard';
 import DeployCard from './DeployCard';
@@ -91,6 +90,7 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
+  const logo = `${process.env.PUBLIC_URL}/images/logo.png`;
 
   const theme = createMuiTheme({
     palette: {
@@ -114,7 +114,7 @@ function App() {
               Replace this with your logo:
             </Typography>
             <Typography variant="caption">
-              <code>'/frontend/src/logo.png'</code>{' '}
+              <code>'/frontend/public/images/logo.png'</code>{' '}
             </Typography>
           </Box>
           <Box mt={-2}>

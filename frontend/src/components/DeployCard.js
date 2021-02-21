@@ -1,8 +1,9 @@
 import { Card, Box, Link } from '@material-ui/core';
-import logo from './logo.png';
 
 function DeployCard(props) {
   const { classes } = props;
+  const logo = `${process.env.PUBLIC_URL}/images/logo.png`;
+
   return (
     <Card className={classes.card}>
       <h2>Deploy your app to the cloud</h2>

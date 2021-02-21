@@ -8,14 +8,15 @@ import {
   Link,
 } from '@material-ui/core';
 
-import localStackLogo from './localStackLogo.png';
+// import localStackLogo from './localStackLogo.png';
 
 function UploadCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-
   const { classes } = props;
+  const localStackLogo = `${process.env.PUBLIC_URL}/images/localStackLogo.png`;
+
   const fetchBucketFiles = () => {
     fetch('api/v1/files')
       .then((res) => res.json())
@@ -73,7 +74,7 @@ function UploadCard(props) {
           width="75px"
           height="100%"
           src={localStackLogo}
-          alt="Express Logo"
+          alt="LocalStack Logo"
         />
       </Box>
       <p>Click below to select and upload an image from your computer.</p>
@@ -96,7 +97,6 @@ function UploadCard(props) {
           alignItems="center"
           justifyContent="center"
           mt={2}
-          mb={1}
         >
           <Button
             variant="contained"

@@ -1,9 +1,6 @@
+import { useEffect, useState } from 'react';
 import { Box, Button, Card, Link } from '@material-ui/core';
 import Prism from 'prismjs';
-
-import React, { useEffect, useState } from 'react';
-
-import expressLogo from './express.png';
 
 function ResponseBlock(props) {
   useEffect(() => {
@@ -21,6 +18,7 @@ function ConnectCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const { classes } = props;
+  const expressLogo = `${process.env.PUBLIC_URL}/images/express.png`;
 
   const fetchData = () => {
     fetch('/api/v1/')

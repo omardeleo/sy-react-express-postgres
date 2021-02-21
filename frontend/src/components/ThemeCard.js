@@ -27,10 +27,10 @@ function ThemeCard(props) {
         <code>
           <Link
             className={classes.link}
-            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/App.js#L95-L99`}
+            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/components/App.js#L95-L99`}
             target="_blank"
           >
-            frontend/src/App.js
+            frontend/src/components/App.js
           </Link>
         </code>{' '}
         and replace the following code:

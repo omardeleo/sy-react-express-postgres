@@ -1,4 +1,4 @@
-![Shipyard](./src/logo.png)
+<img src="./public/images/logo.png" alt="Shipyard logo" width="250"/>
 
 # Getting Started with Create React App
 

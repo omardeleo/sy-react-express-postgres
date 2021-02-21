@@ -33,10 +33,10 @@ function MaterialCard(props) {
         <code>
           <Link
             className={classes.link}
-            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/MaterialCard.js#L27-L29`}
+            href={`${process.env.REACT_APP_STARTER_REPO_URL}frontend/src/components/MaterialCard.js#L27-L29`}
             target="_blank"
           >
-            frontend/src/MaterialCard.js
+            frontend/src/components/MaterialCard.js
           </Link>
         </code>{' '}
         and replace the following code:
