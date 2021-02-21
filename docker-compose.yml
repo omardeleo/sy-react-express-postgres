@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3'
 
 services:
 
@@ -34,7 +34,7 @@ services:
       shipyard.before: 'npx sequelize-cli db:migrate'
       shipyard.route: '/api'
     build:
-      context: ./backend/
+      context: 'backend'
     environment:
       DB_USER: 'obscure-user'
       DB_PASSWORD: 'obscure-password'
@@ -56,10 +56,8 @@ services:
       - DATA_DIR=/tmp/localstack/data
     volumes:
       - 'localstack:/tmp/localstack'
-
     ports:
-      - '4566:4566'
-      - '4571:4571'
+      - '4566'
 
 volumes:
   postgres:
