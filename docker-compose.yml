@@ -19,13 +19,14 @@ services:
 
   postgres:
     image: 'postgres:9.6.20-alpine'
-    environment:
-      POSTGRES_PASSWORD: 'obscure-password'
-      POSTGRES_USER: 'obscure-user'
-      POSTGRES_DB: 'app'
-      PGDATA: '/var/lib/postgresql/data/pgdata'
+    restart: always
     volumes:
       - 'postgres:/var/lib/postgresql/data'
+    environment:
+      - POSTGRES_DB=app
+      - POSTGRES_USER=obscure-user
+      - POSTGRES_PASSWORD=obscure-password
+      - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - '5432'
 
@@ -44,7 +45,6 @@ services:
       LOCALSTACK_HOST: 'localstack'
     depends_on:
       - 'postgres'
-    restart: always
     ports:
       - '8080:8080'
     volumes:
