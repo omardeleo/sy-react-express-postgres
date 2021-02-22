@@ -9,7 +9,6 @@ and [Shipyard](https://shipyard.build) out of the box.
 - [Material-UI](https://github.com/mui-org/material-ui) - React components for faster and simpler web development
 - [Express](https://github.com/expressjs/express) - lightweight node.js web framework
 - [nodemon](https://github.com/remy/nodemon) - auto-reload server on code changes
-- [Pug](https://github.com/pugjs/pug) - HTML template engine that integrates with Express
 - [Sequelize](https://github.com/sequelize/sequelize) - cross-database ORM and migrations
 - [PostgreSQL](https://www.postgresql.org) - database
 - [LocalStack](https://github.com/localstack/localstack) - fully functional local AWS cloud stack
