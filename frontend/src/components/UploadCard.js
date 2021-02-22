@@ -8,8 +8,6 @@ import {
   Link,
 } from '@material-ui/core';
 
-// import localStackLogo from './localStackLogo.png';
-
 function UploadCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
