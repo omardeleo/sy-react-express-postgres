@@ -8,12 +8,13 @@ import {
   Link,
 } from '@material-ui/core';
 
+import localStackLogo from '../assets/images/localStackLogo.png';
+
 function UploadCard(props) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const { classes } = props;
-  const localStackLogo = `${process.env.PUBLIC_URL}/images/localStackLogo.png`;
 
   const fetchBucketFiles = () => {
     fetch('api/v1/files')
