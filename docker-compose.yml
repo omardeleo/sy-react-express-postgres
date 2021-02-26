@@ -1,6 +1,7 @@
-version: '3.8'
+version: '3'
 
 services:
+
   frontend:
     labels:
       shipyard.route: '/'
@@ -8,6 +9,8 @@ services:
     environment:
       CI: 'true'
       DANGEROUSLY_DISABLE_HOST_CHECK: 'true'
+    env_file:
+      - frontend/frontend.env
     volumes:
       - './frontend/src:/app/src'
       - './frontend/public:/app/public'
@@ -32,13 +35,14 @@ services:
       shipyard.before: 'npx sequelize-cli db:migrate'
       shipyard.route: '/api'
     build:
-      context: ./backend/
+      context: 'backend'
     environment:
       DB_USER: 'obscure-user'
       DB_PASSWORD: 'obscure-password'
       DB_NAME: 'app'
       DB_HOST: 'postgres'
       DB_PORT: '5432'
+      LOCALSTACK_HOST: 'localstack'
     depends_on:
       - 'postgres'
     ports:
@@ -46,5 +50,15 @@ services:
     volumes:
       - './backend/src:/app/src'
 
+  localstack:
+    image: 'localstack/localstack'
+    environment:
+      - DATA_DIR=/tmp/localstack/data
+    volumes:
+      - 'localstack:/tmp/localstack'
+    ports:
+      - '4566'
+
 volumes:
   postgres:
+  localstack:
